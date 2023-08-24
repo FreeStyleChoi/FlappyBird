@@ -35,16 +35,26 @@ int main(int argc, char* argv[])
 	backgroundRect.x = 0;
 	backgroundRect.y = 0;
 
-	// object 
-	tmpSurface = IMG_Load("assets/object.png");
-	SDL_Texture* objectTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+	// flappy bird 
+	tmpSurface = IMG_Load("assets/flappy_bird.png");
+	SDL_Texture* birdTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
 	SDL_FreeSurface(tmpSurface);
 
-	SDL_Rect objectRect{};
-	objectRect.w = 64;
-	objectRect.h = 64;
-	objectRect.x = 70;
-	objectRect.y = 100;
+	SDL_Rect birdRect{};
+	birdRect.w = 64;
+	birdRect.h = 64;
+	birdRect.x = 70;
+	birdRect.y = 100;
+
+	// pipe
+	tmpSurface = IMG_Load("assets/pipe");
+	SDL_Texture* pipeTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+
+	SDL_Rect pipeRect{};
+	pipeRect.w = 64;
+	pipeRect.h = 256;
+	pipeRect.x = 70;
+	pipeRect.y = 100;
 
 	// main loop
 	while (isRunning)
@@ -90,7 +100,8 @@ int main(int argc, char* argv[])
 		// render
 		SDL_RenderClear(renderer);
 		SDL_RenderCopy(renderer, backgroundTex, NULL, &backgroundRect);
-		SDL_RenderCopy(renderer, objectTex, NULL, &objectRect);
+		SDL_RenderCopy(renderer, birdTex, NULL, &birdRect);
+		SDL_RenderCopy(renderer, pipeTex, NULL, &pipeRect);
 		SDL_RenderPresent(renderer);
 
 
